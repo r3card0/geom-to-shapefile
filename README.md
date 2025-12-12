@@ -1,5 +1,8 @@
 # Geometry datasets to shapefile format
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![GeoPandas](https://img.shields.io/badge/GeoPandas-3CB371?style=for-the-badge&logo=python&logoColor=white)
+
 This repository provides a Python 🐍 utility for exporting datasets to Shapefile format. It supports both `pandas DataFrames` and `GeoPandas GeoDataFrames`, allowing seamless handling of spatial and no-spatial data.
 
 The tool is designed to work with geometries of type `Point`, ensuring compatibility with common GIS workflows. It includes functions for validating geometries, transforming coordinate reference systems when needed, and exporting clean, ready-to-use Shapefiles for further analysis in GIS platforms such as QGIS and ArcGIS.
