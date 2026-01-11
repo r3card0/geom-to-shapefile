@@ -133,8 +133,4 @@ For improvements or bug resports, please submit an issue or pull request to the 
 # 👤 Author
 
 * GitHub: [r3card0](https://github.com/r3card0)
-<<<<<<< HEAD
 * LinkedIn: [Ricardo](https://www.linkedin.com/in/ricardordzsaldivar/)
-=======
-* LinkedIn: [Ricardo](https://www.linkedin.com/in/ricardordzsaldivar/)
->>>>>>> add_more_geometries
