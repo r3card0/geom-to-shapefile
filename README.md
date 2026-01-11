@@ -2,7 +2,7 @@
 
 This repository provides a Python 🐍 utility for exporting datasets to Shapefile format. It supports both `pandas DataFrames` and `GeoPandas GeoDataFrames`, allowing seamless handling of spatial and no-spatial data.
 
-The tool is designed to work with geometries of type `Point`, ensuring compatibility with common GIS workflows. It includes functions for validating geometries, transforming coordinate reference systems when needed, and exporting clean, ready-to-use Shapefiles for further analysis in GIS platforms such as QGIS and ArcGIS.
+The tool is designed to work with all geometries types: `Point`, `LineString` and `Polygon`, and ensuring compatibility with common GIS workflows. It includes functions for validating geometries, transforming coordinate reference systems when needed, and exporting clean, ready-to-use Shapefiles for further analysis in GIS platforms such as QGIS and ArcGIS.
 
 # 🚀 Getting Ready
 **Prerequisites**
@@ -54,41 +54,45 @@ You can use this repository in two different ways: Clone the repository or insta
 
 
 
-# Basic Usage
+# 🚗 Usage
+**Basic Example in a Notebook**
 
-1. Initialize the Class
+```python
+import sys
+from pathlib import Path
 
-    ```python
-    from export_to_shp import Shp 
+# Get root folder
+project_root = Path.cwd().parent
+sys.path.insert(0, str(project_root))
 
-    import pandas as pd
-    from shapely.geometry import Point
+# Initialize the class
+from src.export_to_shp import Shp
 
-    # Create dummy data
-    data = {
-        'id': [1, 2, 3, 4, 5],
-        'nombre': ['Punto A', 'Punto B', 'Punto C', 'Punto D', 'Punto E'],
-        'valor': [100, 250, 175, 300, 425],
-        'geometry': [
-            Point(-99.133, 19.432),  # Ciudad de México
+# Create dummy data
+data = {
+    'id': [1, 2, 3, 4, 5],
+    'name': ['Point A', 'Point B', 'Point C', 'Point D', 'Point E'],
+    'value': [100, 250, 175, 300, 425],
+    'geometry': [
+            Point(-99.133, 19.432),  # México City
             Point(-99.150, 19.450),
             Point(-99.120, 19.410),
             Point(-99.140, 19.425),
             Point(-99.160, 19.440)
-        ]
-    }
+            ]
+}
 
-    # Create DataFrame
-    df = pd.DataFrame(data)
+# Create DataFrame
+df = pd.DataFrame(data)
 
-    # Create instance (default CRS is EPSG:4326 - WGS84)
-    five_points = Shp(df,"geometry","mex_five_points")
-    ```
-2. Export to shapefile
+# Create instance (default CRS is EPSG:4326 - WGS84)
+five_points = Shp(df,"geometry","mex_five_points")
+```
+1. Export to shapefile
 
-    ```python
-    five_points.export_shp()
-    ```
+```python
+five_points.export_shp()
+```
 ### Class Methods
 
 |method|description|Returns|
@@ -101,8 +105,29 @@ You can use this repository in two different ways: Clone the repository or insta
 
 For improvements or bug resports, please submit an issue or pull request to the repository
 
-# Author
+## 🔗 References
+**Geopandas**
+* [Geopandas - Documentation](https://geopandas.org/en/stable/)
 
-[r3card0](https://github.com/r3card0)
+**Shapely**
+* [Shapely - Documentation](https://shapely.readthedocs.io/en/stable/)
+* [Shapely - Geometry Types](https://shapely.readthedocs.io/en/stable/geometry.html#geometry-types)
+* [Shapely - wkt.loads](https://shapely.readthedocs.io/en/stable/manual.html#shapely.wkt.loads)
+* [Shapely - BaseGeometry](https://github.com/shapely/shapely/blob/main/shapely/geometry/base.py)
 
-Last Update: Nov 2025
+**Python**
+
+* [isinstance() - Documentation](https://docs.python.org/3/library/functions.html#isinstance)
+* [Built-in Exception](https://docs.python.org/3/library/functions.html#isinstance)
+* [raise exception](https://www.w3schools.com/python/gloss_python_raise.asp)
+* [os - Documentation](https://docs.python.org/3/library/os.html)
+
+**Pandas**
+* [Pandas - apply()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html)
+
+
+
+# 👤 Author
+
+* GitHub: [r3card0](https://github.com/r3card0)
+* LinkedIn: [Ricardo](https://www.linkedin.com/in/ricardordzsaldivar/)

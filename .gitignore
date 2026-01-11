@@ -2,3 +2,4 @@
 /test
 /src/export_to_shp/__pycache__
 /src/export_to_shp.egg-info
+/src/export_to_shp/.ipynb_checkpoints

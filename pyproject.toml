@@ -4,13 +4,24 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "export-to-shp"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python class for exporting DataFrame or GeoDataFrame to shapefile format"
 readme = "README.md"
 requires-python = ">=3.10"
 
 authors = [
     {name = "r3card0", email = "ricardo.rdz@protonmail.com"}
+]
+
+dependencies = [
+    "geopandas>=1.1.2",
+]
+
+license = { file = "MIT License" }
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
 ]
 
 [tool.setuptools.packages.find]
