@@ -2,7 +2,8 @@ import os
 
 import geopandas as gpd
 from shapely import wkt
-from shapely.geometry import Point
+# from shapely.geometry import Point
+from shapely.geometry.base import BaseGeometry
 
 class Shp:
     def __init__(self, dataset:object,geometry_column_name:str,filename:str,crs=None):
@@ -31,7 +32,7 @@ class Shp:
         def safe_wkt_load(x):
             if isinstance(x,str):
                 return wkt.loads(x)
-            elif isinstance(x,Point):
+            elif isinstance(x,BaseGeometry):
                 return x
             else:
                 raise TypeError(f"Data type not recognized: {type(x)}")
