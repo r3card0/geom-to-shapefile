@@ -5,13 +5,15 @@
 
 This repository provides a Python 🐍 utility for exporting datasets to Shapefile format. It supports both `pandas DataFrames` and `GeoPandas GeoDataFrames`, allowing seamless handling of spatial and no-spatial data.
 
+
+## 🧭 Overview
 The tool is designed to work with all geometries types: `Point`, `LineString` and `Polygon`, and ensuring compatibility with common GIS workflows. It includes functions for validating geometries, transforming coordinate reference systems when needed, and exporting clean, ready-to-use Shapefiles for further analysis in GIS platforms such as QGIS and ArcGIS.
 
-# 🚀 Getting Ready
+## ⚙️ Installation
 **Prerequisites**
 - Python > 3.10
 
-You can use this repository in two different ways: Clone the repository or install as a dependency
+> You can use this repository in two different ways: Clone the repository or install as a dependency
 
 1. Clone the repository
 
@@ -38,24 +40,36 @@ You can use this repository in two different ways: Clone the repository or insta
         source <virtual_env_name>/bin/activate
         ```
 
-    3. Install libraries `geopandas` 
+    3. 📦 Install repository as a dependency:
 
         ```bash
-        pip install geopandas
+        pip install git+https://github.com/r3card0/geom-to-shapefile.git@v0.2.0
         ```
 
-        **Required Libraries**
-
-         * `shapely` - Geometry handling
-
-        and install repository as a dependency:
+        The following libraries will be installed:
 
         ```bash
-        pip install git+https://github.com/r3card0/geom-to-shapefile.git@v0.1.0
+        certifi==2026.1.4
+        export-to-shp @ git+https://github.com/r3card0/geom-to-shapefile.git@cde51dcf63f4b1b7dbd9e39cf4a8baecedc1fec9
+        geopandas==1.1.2
+        numpy==2.2.6
+        packaging==25.0
+        pandas==2.3.3
+        pyogrio==0.12.1
+        pyproj==3.7.1
+        python-dateutil==2.9.0.post0
+        pytz==2025.2
+        shapely==2.1.2
+        six==1.17.0
+        tzdata==2025.3
         ```
 
 
-
+# Versions
+|Version|Description|
+|-|-|
+|v0.1.0|Initial Version - Handle `Point` Geometry|
+|v0.2.0|Handle `Any` type Geometry|
 
 # 🚗 Usage
 **Basic Example in a Notebook**
@@ -100,9 +114,9 @@ five_points.export_shp()
 
 |method|description|Returns|
 |-|-|-|
-|**is_geodataframe**|Evaluates if the object is a `GeoDataFrame`|Boolean: `False` or `True`|
-|**build_geodataframe**|Converts a `DataFrame` to a `GeoDataFrame`|`GeoDataFrame` dataset|
-|**export_shp**|Exports `GeoDataFrame` to a `Shapefile` format|`Shapefile` of `Point` geometry. Create a folder named `shapefiles` and exports the file into it|
+|**is_geodataframe**|Evaluate if the object is a `GeoDataFrame`|Boolean: `False` or `True`|
+|**build_geodataframe**|Convert a `DataFrame` to a `GeoDataFrame`|`GeoDataFrame` dataset|
+|**export_shp**|Export `GeoDataFrame` to a `Shapefile` format|`Shapefile` of `Point`, `LineString`, `Polygon` geometry. Create a folder named `shapefiles` and exports the file into it|
 
 # Contributing
 
