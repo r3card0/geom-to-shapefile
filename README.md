@@ -74,6 +74,8 @@ The tool is designed to work with all geometries types: `Point`, `LineString` an
 # 🚗 Usage
 **Basic Example in a Notebook**
 
+When the repository was cloned
+
 ```python
 import sys
 from pathlib import Path
@@ -102,14 +104,71 @@ data = {
 # Create DataFrame
 df = pd.DataFrame(data)
 
-# Create instance (default CRS is EPSG:4326 - WGS84)
-five_points = Shp(df,"geometry","mex_five_points")
+# Create instance: Setting filename and EPSG is required 
+five_points = Shp(df,"geometry","mex_five_points","EPSG:4326")
 ```
 1. Export to shapefile
 
 ```python
 five_points.export_shp()
 ```
+
+**Input Validation**
+
+Thisproject peformes **early validation** of required input attributes to ensure data consistency and to avoid ambiguous spatial operations.
+
+**`filename`**
+* Type:`str`
+* Required: Yes
+
+The `filename` attribute, represents the name of the input or output file used by the process.
+
+Validation rules:
+
+* The attribute must be provided.
+* If `filename` is `None`, empty, or missing, the process will fall immediately.
+
+Rationale:
+> A valid filename is required for reading, writing or tracking outputs.
+> Failing early prevents silent errors and incomplete executions.
+
+Example error:
+```bash
+ValueError: ⚠️ The filename is required and cannot be empty
+```
+
+**`crs` (Coordinate Reference System)**
+
+* Type:`str`
+* Required: Yes
+* Expected format: EPSG code(e.g. `EPSG:4326`)
+
+The `crs` attribute explicity defines the Coordinate Reference System of the input geometry.
+
+Validation Rules:
+
+* The CRS must be explicity provided.
+* A valid CRS string is required (for example: `EPSG:4326`)
+* If `crs` is `None` or invalid, the process will fail
+* Only geographic coordinate systems (longitude/latitude in degrees or decimals) are accepted
+
+Rationale:
+
+> Spatial operations as distance calculations, reprojections, or clustering require a known and explicit CRS.
+
+Example Error:
+
+```bash
+ValueError: CRS is required (expected a geographic CRS such as EPGS:4326)
+```
+
+**Design Principle**
+
+This project follows a fail-fast approach:
+* Invalid or missing inputs are rejected immediately.
+* Errors are raised at object initialization rather than during processing.
+* This ensures predictable behavior and easier debugging.
+
 ### Class Methods
 
 |method|description|Returns|
@@ -148,3 +207,5 @@ For improvements or bug resports, please submit an issue or pull request to the 
 
 * GitHub: [r3card0](https://github.com/r3card0)
 * LinkedIn: [Ricardo](https://www.linkedin.com/in/ricardordzsaldivar/)
+
+Update: Jan 2026
